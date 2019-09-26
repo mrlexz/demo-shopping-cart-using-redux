@@ -25,8 +25,7 @@ const Billing = () => {
                             <div className="select-wrap">
                                 <div className="icon"><span className="ion-ios-arrow-down" /></div>
                                 <select className="form-control">
-                                    <option value>France</option>
-                                    <option value>Italy</option>
+                                    <option value>Vietnam</option>
                                     <option value>Philippines</option>
                                     <option value>South Korea</option>
                                     <option value>Hongkong</option>
@@ -74,14 +73,6 @@ const Billing = () => {
                         </div>
                     </div>
                     <div className="w-100" />
-                    <div className="col-md-12">
-                        <div className="form-group mt-4">
-                            <div className="radio">
-                                <label className="mr-3"><input type="radio" name="optradio" /> Create an Account? </label>
-                                <label><input type="radio" name="optradio" /> Ship to different address</label>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </form>{/* END */}
         </div>

@@ -5,23 +5,28 @@ import Header from '../../components/header';
 import Sub from '../../components/subcribe';
 import { connect } from 'react-redux';
 import DetailsProduct from '../../components/details-product';
-
 const ProductDetails = (props) => {
+    const findProductInCart = (cart, id) => {
+        const index = cart.findIndex(item => {
+            return item.id.toString() === id;
+        })
+        return index;
+    }
     return (
         <div className="goto-here">
             <Header />
             <Navbar />
-            <DetailsProduct product={props.product_detail_id} />
+            <DetailsProduct product={props.product_detail_id[findProductInCart(props.products, props.match.params.id)]} />
             <Sub />
             <Footer />
         </div>
     )
 }
-const mapStateToProps = (state, props) => {
-    let index = props.match.params.id;
-    console.log(index);
+
+const mapStateToProps = (state) => {
     return {
-        product_detail_id: state.products[index - 1]
+        product_detail_id: state.products,
+        products: state.products
     }
 }
 

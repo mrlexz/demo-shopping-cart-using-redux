@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import { actAddToCart } from './../../actions/index'
 const DetailsProduct = (props) => {
     const product = props.product;
-    const imgae = product.src;
-    console.log(imgae);
     return (
         <section className="ftco-section">
             <div className="container">
@@ -36,7 +34,7 @@ const DetailsProduct = (props) => {
               </p>
                         <div className="row mt-4">
                             <div className="col-md-12">
-                                <p style={{ color: '#000' }}>600 kg available</p>
+                                <p style={{ color: '#000' }}>Available</p>
                             </div>
                         </div>
                         <p><NavLink to="/cart" className="btn btn-black py-3 px-5" onClick={() => { props.addToCart(product) }}>Add to Cart</NavLink></p>

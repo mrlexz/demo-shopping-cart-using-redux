@@ -25,6 +25,7 @@ const ProductView = (props) => {
         </section>
     )
 }
+
 const mapStateToProps = (state) => {
     return {
         products: state.products

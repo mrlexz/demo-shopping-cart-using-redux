@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 const style = {
-    backgroundImage: "url('images/bg_1.jpg')"
+    backgroundImage: "url('images/img_bg_1.jpg')"
 }
 const Banner = () => {
     return (

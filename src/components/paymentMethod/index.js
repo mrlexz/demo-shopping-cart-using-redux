@@ -32,7 +32,7 @@ const PaymentMeth = () => {
                     </div>
                 </div>
             </div>
-            <p><NavLink to="#" className="btn btn-primary py-3 px-4">Place an order</NavLink></p>
+            <p><NavLink to="/confirmcheckout" className="btn btn-primary py-3 px-4">Place an order</NavLink></p>
         </div>
 
     )
