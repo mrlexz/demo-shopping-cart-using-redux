@@ -6,6 +6,7 @@ import Checkout from './Pages/Checkout/checkout';
 import ConfirmCheckout from './Pages/ConfirmCheckout/confirmCheckout';
 import Home from './Pages/Home/home';
 import NotFound from './Pages/NotFound/notfound';
+import BuySuccess from './Pages/BuySuccess/buysuccess';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/cart" exact component={Cart} />
           <Route path="/checkout" exact component={Checkout} />
           <Route path="/confirmcheckout" exact component={ConfirmCheckout} />
+          <Route path="/success" exact component={BuySuccess} />
           <Route component={NotFound} />
         </Switch>
       </div>

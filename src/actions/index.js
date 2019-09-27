@@ -25,3 +25,14 @@ export const actDelItem = (product) => {
         product
     }
 }
+export const actChangeForm = (inforCustomer) => {
+    return {
+        type: types.CHANGE_FORM,
+        inforCustomer
+    }
+}
+export const actSubmit = () => {
+    return {
+        type: types.SUBMIT_FORM
+    }
+}

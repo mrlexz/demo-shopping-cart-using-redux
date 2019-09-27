@@ -1,6 +1,22 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-const PaymentMeth = () => {
+import { connect } from 'react-redux';
+import { actChangeForm } from './../../actions/index';
+const PaymentMeth = (props) => {
+    // const changeFormHandler = (event) => {
+    //     let target = event.target;
+    //     let value = target.value;
+    //     let name = target.name;
+    //     const infor = {
+    //         [name]: value
+    //     }
+    //     event.preventDefault();
+    //     props.onChangeHandler(infor);
+    // }
+    const submitHandler = (event) => {
+        event.preventDefault();
+        props.SubmitFormHand();
+    }
     return (
         <div className="cart-detail p-3 p-md-4">
             <h3 className="billing-heading mb-4">Payment Method</h3>
@@ -32,9 +48,20 @@ const PaymentMeth = () => {
                     </div>
                 </div>
             </div>
-            <p><NavLink to="/confirmcheckout" className="btn btn-primary py-3 px-4">Place an order</NavLink></p>
+            <button type="submit" onClick={submitHandler} className="btn btn-primary py-3 px-4">
+                <NavLink to="/confirmcheckout" >
+                    Place an order
+                </NavLink></button>
         </div>
 
     )
 }
-export default PaymentMeth;
+const mapDispatchToProps = dispatch => {
+    return {
+        changeForm: (infor) => {
+            dispatch(actChangeForm(infor));
+        }
+
+    }
+}
+export default connect(null, mapDispatchToProps)(PaymentMeth);

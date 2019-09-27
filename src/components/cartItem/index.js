@@ -20,9 +20,6 @@ const CartItem = (props) => {
             </td>
             <td className="price">${cartItem.price}</td>
             <td className="price">
-                {/* <div className="input-group mb-3">
-                    <input type="text" name="quantity" className="quantity form-control input-number" defaultValue={cartItem.quantity} min={1} max={100} />
-                </div> */}
                 {quantity}
                 <button style={styleBtn} type="button" onClick={() => props.increase(cartItem)}>+</button>
                 <button style={styleBtn} type="button" onClick={() => props.decrease(cartItem)}>-</button>

@@ -22,9 +22,6 @@ const Checkout = () => {
                                 <div className="col-md-12 d-flex mb-5">
                                     <CartTotals />
                                 </div>
-                                <div className="col-md-12">
-                                    <PaymentMeth />
-                                </div>
                             </div>
                         </div> {/* .col-md-8 */}
                     </div>
