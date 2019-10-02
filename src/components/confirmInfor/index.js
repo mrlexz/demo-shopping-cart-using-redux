@@ -1,11 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { actBuy } from './../../actions/index';
 const style = {
     display: 'flex'
 }
 const ConfirmInfor = (props) => {
-    const infor = props.infor;
+    const infor = props.infor
     let cartItems = props.cartItems;
     const getQuantity = (initStateCarts) => {
         initStateCarts = cartItems;
@@ -32,6 +33,30 @@ const ConfirmInfor = (props) => {
         }
         return discount;
     }
+    const country = val => {
+        let result = '';
+        switch (val) {
+            case "0":
+                result = "Vietnam"
+                break;
+            case "1":
+                result = "Philippines"
+                break;
+            case "2":
+                result = "South Korea"
+                break;
+            case "3":
+                result = "Hongkong"
+                break;
+            case "4":
+                result = "Japan"
+                break;
+            default:
+                break;
+        }
+        return result;
+    }
+
     return (
         <div className="cart-total mb-3">
             <h3>Your Infor</h3>
@@ -41,7 +66,7 @@ const ConfirmInfor = (props) => {
             </p>
             <p className="d-flex">
                 <span>Address:</span>
-                <span>{infor.txtAddress}</span>
+                <span>{infor.txtAddress}, {infor.txtCity}, {country(infor.sltCountry)}</span>
             </p>
             <p className="d-flex">
                 <span>Phone:</span>
@@ -51,10 +76,13 @@ const ConfirmInfor = (props) => {
                 <span>Email:</span>
                 <span>{infor.txtEmail}</span>
             </p>
-            <p className="d-flex">
-                <span>Payment Method:</span>
-                <span>$aaaaaaaaaaa</span>
-            </p>
+            <span>Product: </span>
+            {cartItems.map((cart, index) => {
+                return <p className="d-flex">
+                    <span>{cart.product.name}                 x{cart.quantity}</span>
+                </p>
+            })}
+
             <hr />
             <p className="d-flex total-price">
                 <span>Total</span>
@@ -62,7 +90,7 @@ const ConfirmInfor = (props) => {
             </p>
             <div style={style}>
                 <p><NavLink to="/checkout" className="btn btn-outline-success py-3 px-4">Back</NavLink></p>
-                <p><NavLink to="/success" className="btn btn-outline-success py-3 px-4">Buy</NavLink></p>
+                <p><NavLink to="/success" className="btn btn-outline-success py-3 px-4" onClick={props.buy}>Buy</NavLink></p>
             </div>
         </div>
 
@@ -74,4 +102,11 @@ const mapStateToProps = state => {
         cartItems: state.carts
     }
 }
-export default connect(mapStateToProps, null)(ConfirmInfor);
+const mapDispatchToProps = dispatch => {
+    return {
+        buy: () => {
+            dispatch(actBuy());
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ConfirmInfor);

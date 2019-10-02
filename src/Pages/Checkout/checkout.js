@@ -6,7 +6,6 @@ import Banner from '../../components/banner';
 import Sub from '../../components/subcribe';
 import Billing from '../../components/billingDetails';
 import CartTotals from '../../components/cartTotals';
-import PaymentMeth from '../../components/paymentMethod';
 const Checkout = () => {
     return (
         <div className="goto-here">

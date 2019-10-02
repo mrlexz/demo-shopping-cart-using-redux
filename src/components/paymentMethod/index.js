@@ -3,16 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actChangeForm } from './../../actions/index';
 const PaymentMeth = (props) => {
-    // const changeFormHandler = (event) => {
-    //     let target = event.target;
-    //     let value = target.value;
-    //     let name = target.name;
-    //     const infor = {
-    //         [name]: value
-    //     }
-    //     event.preventDefault();
-    //     props.onChangeHandler(infor);
-    // }
     const submitHandler = (event) => {
         event.preventDefault();
         props.SubmitFormHand();

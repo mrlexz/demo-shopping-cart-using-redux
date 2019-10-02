@@ -36,3 +36,8 @@ export const actSubmit = () => {
         type: types.SUBMIT_FORM
     }
 }
+export const actBuy = () => {
+    return {
+        type: types.BUY
+    }
+}

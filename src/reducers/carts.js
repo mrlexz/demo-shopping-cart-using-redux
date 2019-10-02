@@ -37,6 +37,9 @@ const carts = (state = initState, action) => {
                 state.splice(indexDel, 1);
             }
             return [...state]
+        case types.BUY:
+            const newState = [];
+            return newState;
         default:
             return [...state];
     }

@@ -1,13 +1,6 @@
 import * as types from './../constants/ActionType';
 var initialState = {
-    txtFName: '',
-    txtLName: '',
-    sltCountry: 0,
-    txtAddress: '',
-    txtCity: '',
-    txtCode: '',
-    txtPhone: '',
-    txtEmail: ''
+
 };
 const infor = (state = initialState, action) => {
     switch (action.type) {
