@@ -2,84 +2,84 @@ var initialState = [
     {
         id: 'a1',
         src: 'images/product-1.jpg',
-        name: 'BELL PEPPER',
+        name: 'STRONGBOW',
         price: 100,
 
     },
     {
         id: 'a2',
         src: 'images/product-2.jpg',
-        name: 'STRAWBERRY',
+        name: 'HEINEKEN',
         price: 120,
 
     },
     {
         id: 'a3',
-        src: 'images/product-3.jpg',
-        name: 'GREEN BEANS',
+        src: 'images/tiger.jpg',
+        name: 'TIGER',
         price: 110,
 
     },
     {
         id: 'a4',
-        src: 'images/product-4.jpg',
-        name: 'PURPLE CABBAGE',
+        src: 'images/sagonxanh.jpg',
+        name: 'SAIGON BLUE',
         price: 120,
 
     },
     {
         id: 'a5',
-        src: 'images/product-5.jpg',
-        name: 'TOMATOE',
+        src: 'images/333.jpg',
+        name: '333 BEER',
         price: 150,
 
     },
     {
         id: 'a6',
-        src: 'images/product-6.jpg',
-        name: 'BROCOLLI',
+        src: 'images/larue2.jpg',
+        name: 'LARUE BLUE',
         price: 130,
 
     },
     {
         id: 'a7',
-        src: 'images/product-7.jpg',
-        name: 'CARROTS',
+        src: 'images/larue3.jpg',
+        name: 'LARUE YELLOW',
         price: 125,
 
     },
     {
         id: 'a8',
-        src: 'images/product-8.jpg',
-        name: 'FRUIT JUICE',
+        src: 'images/budwei.jpg',
+        name: 'BUDWEISER',
         price: 130,
 
     },
     {
         id: 'a9',
-        src: 'images/product-9.jpg',
-        name: 'ONION',
+        src: 'images/sutu.jpg',
+        name: 'WHITE LION',
         price: 135,
 
     },
     {
         id: 'a10',
-        src: 'images/product-10.jpg',
-        name: 'APPLE',
+        src: 'images/tubo.jpg',
+        name: 'TUBORG',
         price: 100,
 
     },
     {
         id: 'a11',
-        src: 'images/product-11.jpg',
-        name: 'GARLIC',
+        src: 'images/sgs.jpg',
+        name: 'SAIGON SPECIAL',
         price: 90,
 
     },
     {
         id: 'a12',
-        src: 'images/product-12.jpg',
-        name: 'CHILLI',
+        src: 'images/corona.jpg',
+        name: 'CORONA BEER',
         price: 140,
 
     },

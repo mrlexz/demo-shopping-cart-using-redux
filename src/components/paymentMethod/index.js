@@ -39,7 +39,7 @@ const PaymentMeth = (props) => {
                 </div>
             </div>
             <button type="submit" onClick={submitHandler} className="btn btn-primary py-3 px-4">
-                <NavLink to="/confirmcheckout" >
+                <NavLink to="/confirmcheckout" className="checkout">
                     Place an order
                 </NavLink></button>
         </div>
