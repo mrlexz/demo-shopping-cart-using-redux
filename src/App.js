@@ -10,7 +10,9 @@ import BuySuccess from './Pages/BuySuccess/buysuccess';
 import Login from './Pages/Login/login';
 import Register from './Pages/Register/register';
 import UserProfile from './Pages/UserProfile/userProfile';
+import ProductManage from './Pages/ProductManage/productManage';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 function App() {
   return (
     <BrowserRouter>
@@ -26,6 +28,7 @@ function App() {
           <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={Register} />
           <Route path="/user-profile" exact component={UserProfile} />
+          <Route path="/product-manage" exact component={ProductManage} />
           <Route component={NotFound} />
         </Switch>
       </div>

@@ -25,6 +25,29 @@
   color: #82ae46;
 }
  
+/* productManage */
+.productManage h3{
+  text-align: center;
+}
+.edit{
+  width: 20%;
+  margin-right: 20px;
+}
+
+.edit :hover{
+  background-color: #fff;
+  color: #ffc107;
+  border-color: #ffc107;
+}
+
+.delete{
+  width: 20%;
+}
+
+.create{
+  width: 20%;
+}
+/*  */
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
