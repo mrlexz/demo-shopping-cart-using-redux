@@ -1,6 +1,9 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
+import {notification} from 'antd';
 import 'antd/dist/antd.css'; 
 import { login } from './../../actions/index';
+import {callAPI} from '../../services/callAPI';
 import { connect } from 'react-redux';
 import { Form, Input, Button, Checkbox } from 'antd';
 
@@ -13,13 +16,42 @@ const tailLayout = {
 };
 
 const Login = (props) => {
+
+  const [error, setError] = React.useState();
+
   const onFinish = values => {
-    props.loginAction(values);
+      callAPI(values, 'http://localhost:8000/auth/token/', 'POST').then((resp) => {
+        if(resp.status === 200) {
+          props.loginAction(resp.data);
+          notification["success"]({
+            message: 'Login success',
+            description:
+              'Login success!!!',
+          });
+        } else {
+          setError(true);
+        }
+    }).catch((error) => {
+      setError(true);
+    });
   };
+
+ if(error) {
+  notification["error"]({
+    message: 'Login failed',
+    description:
+      'Login faled!!!',
+  });
+  setError();
+}
 
   const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };
+
+  if(props.infor.isLogin){
+    return <Redirect to="/" />
+  }
 
   return (
     <div className="login-custom">
@@ -64,6 +96,12 @@ const Login = (props) => {
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+      infor: state.login,
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
       loginAction: (data) => {
@@ -72,4 +110,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

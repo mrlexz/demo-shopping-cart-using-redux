@@ -23,7 +23,7 @@ const Footer = () => {
                                 <li><NavLink to="#" className="py-2 d-block">Shop</NavLink></li>
                                 <li><NavLink to="#" className="py-2 d-block">About</NavLink></li>
                                 <li><NavLink to="#" className="py-2 d-block">Journal</NavLink></li>
-                                <li><NavLink to="#" className="py-2 d-block">Contact Us</NavLink></li>
+                                <li><NavLink to="/group-profile" className="py-2 d-block">Contact Us</NavLink></li>
                             </ul>
                         </div>
                     </div>

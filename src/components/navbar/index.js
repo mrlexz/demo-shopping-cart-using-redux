@@ -40,10 +40,10 @@ const Navbar = (props) => {
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item"><NavLink to="/products" className="nav-link">Products</NavLink></li>
                         <li className="nav-item"><NavLink to="/checkout" className="nav-link">Checkout</NavLink></li>
-                        <li className="nav-item"><NavLink to="/user-profile" className="nav-link">User Profile</NavLink></li>
                         {/* {showMenus(menus)} */}
                         <li className="nav-item cta cta-colored"><NavLink to="/cart" className="nav-link"><span className="icon-shopping_cart"></span>[{cartItems.length}]</NavLink></li>
-                        <li className="nav-item"><NavLink to="/login" className="nav-link">Login</NavLink></li>
+                        <li className="nav-item"><NavLink to="/user-profile" className="nav-link">User Profile</NavLink></li>
+                        {!props.infor.isLogin && <li className="nav-item"><NavLink to="/login" className="nav-link">Login</NavLink></li>}
                         <li className="nav-item"><NavLink to="/register" className="nav-link">Logon</NavLink></li>
                     </ul>
                 </div>
@@ -55,7 +55,8 @@ const Navbar = (props) => {
 const mapStateToProps = state => {
     return {
         cartItems: state.carts,
-        menus: state.menus
+        menus: state.menus,
+        infor: state.login,
     }
 }
 export default connect(mapStateToProps)(Navbar);

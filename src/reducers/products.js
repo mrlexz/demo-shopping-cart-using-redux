@@ -1,5 +1,4 @@
 import * as types from './../constants/ActionType';
-import {callAPI} from '../services/callAPI';
 
 var initialState = [
     // {
@@ -92,17 +91,8 @@ var initialState = [
 const products = (state = initialState, action) => {
     switch (action.type) {
         case types.GET_PRODUCT:
-            try {
-            const result = callAPI(action.payload, 'http://localhost:8000/beers/', 'GET');
-            console.log(result);
-            result.then(data => {
-                state = data;
-            });
-            console.log(state);
-            return state;
-            } catch (err) {
-
-            }
+            state = action.payload;
+            return [...state];
             
         default:
             return [...state];
