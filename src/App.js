@@ -7,6 +7,7 @@ import ConfirmCheckout from './Pages/ConfirmCheckout/confirmCheckout';
 import Home from './Pages/Home/home';
 import NotFound from './Pages/NotFound/notfound';
 import BuySuccess from './Pages/BuySuccess/buysuccess';
+import GroupProfile from './Pages/GroupProfile/index';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/checkout" exact component={Checkout} />
           <Route path="/confirmcheckout" exact component={ConfirmCheckout} />
           <Route path="/success" exact component={BuySuccess} />
+          <Route path="/group-profile" exact component={GroupProfile} />
           <Route component={NotFound} />
         </Switch>
       </div>
