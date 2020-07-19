@@ -8,16 +8,40 @@ const GroupProfile = (props) => {
    
     return (
         <div className="row">
-            <div className="col-sm-4">
+            <div className="col-sm-3">
            <div className="groupfile">
             <img src="abc.jpg" alt="Image" width="350" height="300"/>
                <p className="group">Thành viên 1</p>
            </div>
            </div>
-           <div className="col-sm-4">
+           <div className="col-sm-3">
            <div className="groupfile">
             <img src="abc.jpg" alt="Image" width="350" height="300"/>
-               <p className="group">Thành viên 1</p>
+               <p className="group">Thành viên 2</p>
+           </div>
+           </div>
+           <div className="col-sm-3">
+           <div className="groupfile">
+            <img src="abc.jpg" alt="Image" width="350" height="300"/>
+               <p className="group">Thành viên 3</p>
+           </div>
+           </div>
+           <div className="col-sm-3">
+           <div className="groupfile">
+            <img src="abc.jpg" alt="Image" width="350" height="300"/>
+               <p className="group">Thành viên 4</p>
+           </div>
+           </div>
+           <div className="col-sm-3">
+           <div className="groupfile">
+            <img src="abc.jpg" alt="Image" width="350" height="300"/>
+               <p className="group">Thành viên 5</p>
+           </div>
+           </div>
+           <div className="col-sm-3">
+           <div className="groupfile">
+            <img src="abc.jpg" alt="Image" width="350" height="300"/>
+               <p className="group">Thành viên 6</p>
            </div>
            </div>
         </div>
