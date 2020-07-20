@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import {callAPI} from '../../services/callAPI';
 import { register } from './../../actions/index'
+import {Redirect} from 'react-router-dom';
 import {
   Form,
   Input,
   Select,
   Checkbox,
   Button,
-  InputNumber
+  InputNumber,
+  notification
 } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css'; 
@@ -45,10 +48,33 @@ const tailFormItemLayout = {
 
 const RegistrationForm = (props) => {
   const [form] = Form.useForm();
+  const [isRegistered, setIsRegistered] = useState();
 
   const onFinish = values => {
-    props.addToCart(values);
+    callAPI(values,'http://localhost:8000/myUser/', 'POST').then(resp => {
+      if(resp.status === 201) {
+        setIsRegistered(true);
+        notification["success"]({
+          message: 'Register success',
+          description:
+            'Register success!!!',
+        });
+        props.registerFunc();
+      }
+    }).catch(err => {
+      notification["error"]({
+        message: 'Register error',
+        description:
+          'Register error!!!',
+      });
+      setIsRegistered(false);
+      console.log(err);
+    })
   };
+
+  if(isRegistered) {
+    return <Redirect to="/login" />
+  }
 
   return (
       <div className="login-custom">
@@ -178,8 +204,8 @@ const RegistrationForm = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      addToCart: (data) => {
-          dispatch(register(data));
+      registerFunc: () => {
+          dispatch(register());
       }
   }
 }
