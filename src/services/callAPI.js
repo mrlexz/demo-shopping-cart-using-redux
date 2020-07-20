@@ -1,14 +1,27 @@
 import axios from 'axios';
 
 export const callAPI = async (data,url, method = 'GET') => {
-    const result = await axios({
+  let result;
+  switch(method) {
+    case 'GET':
+      await axios({
+        method: method,
+        url: url,
+      }).then(resp => {
+        result = resp.data;
+      }).catch( err => {
+        console.log(err);
+      });
+    break;
+    case 'POST':
+      await axios({
         method: method,
         url: url,
         data: data,
-        // headers: {
-        //   'Access-Control-Allow-Origin' : '*',
-        //   'Content-Type':  'application/json',
-        // }
       });
-    return result;
+    break;
+    default:
+      break;
+  }
+  return result;
 }

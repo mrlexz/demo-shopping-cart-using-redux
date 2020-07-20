@@ -2,10 +2,15 @@ import React from 'react';
 import Product from '../product';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { actAddToCart } from './../../actions/index';
+import { actAddToCart, getProduct } from './../../actions/index';
 const ProductView = (props) => {
     let products = props.products;
     let onAddToCart = props.onAddToCart;
+
+    console.log(products);
+    React.useEffect(() => {
+        props.onGetProduct();
+    }, [])
     return (
         <section className="ftco-section">
             <div className="container">
@@ -17,9 +22,9 @@ const ProductView = (props) => {
                     </div>
                 </div>
                 <div className="row">
-                    {products.map((product, index) => {
+                    {/* {products?.map((product, index) => {
                         return <Product key={index} product={product} onAddToCart={onAddToCart} />
-                    })}
+                    })} */}
                 </div>
             </div>
         </section>
@@ -35,6 +40,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onAddToCart: (product) => {
             dispatch(actAddToCart(product, 1));
+        },
+        onGetProduct: () => {
+            dispatch(getProduct());
         }
     }
 }

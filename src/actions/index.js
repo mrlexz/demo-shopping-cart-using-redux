@@ -56,3 +56,9 @@ export const login = (data) => {
     }
 }
 
+export const getProduct = (data) => {
+    return {
+        type: types.GET_PRODUCT,
+        payload: data
+    }
+}
