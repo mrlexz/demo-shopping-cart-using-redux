@@ -4,13 +4,6 @@ const Footer = () => {
     return (
         <footer className="ftco-footer ftco-section">
             <div className="container">
-                <div className="row">
-                    <div className="mouse">
-                        <NavLink to="#" className="mouse-icon">
-                            <div className="mouse-wheel"><span className="ion-ios-arrow-up"></span></div>
-                        </NavLink>
-                    </div>
-                </div>
                 <div className="row mb-5">
                     <div className="col-md">
                         <div className="ftco-footer-widget mb-4">
@@ -30,7 +23,7 @@ const Footer = () => {
                                 <li><NavLink to="#" className="py-2 d-block">Shop</NavLink></li>
                                 <li><NavLink to="#" className="py-2 d-block">About</NavLink></li>
                                 <li><NavLink to="#" className="py-2 d-block">Journal</NavLink></li>
-                                <li><NavLink to="#" className="py-2 d-block">Contact Us</NavLink></li>
+                                <li><NavLink to="/group-profile" className="py-2 d-block">Contact Us</NavLink></li>
                             </ul>
                         </div>
                     </div>

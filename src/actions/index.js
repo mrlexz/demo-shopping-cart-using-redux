@@ -41,3 +41,24 @@ export const actBuy = () => {
         type: types.BUY
     }
 }
+
+export const register = (data) => {
+    return {
+        type: types.REGISTER,
+        payload: data
+    }
+}
+
+export const login = (data) => {
+    return {
+        type: types.LOG_IN,
+        payload: data
+    }
+}
+
+export const getProduct = (data) => {
+    return {
+        type: types.GET_PRODUCT,
+        payload: data
+    }
+}

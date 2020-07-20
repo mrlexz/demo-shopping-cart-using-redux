@@ -4,6 +4,27 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+ .userProfile {
+    margin-top: 30px;
+    width: 50%;
+    margin: 0 auto;
+    
+ }
+ .userProfile h4{
+   text-align: center;
+ }
+ .profileItem{
+   line-height: 3;
+   text-align: right;
+ }
+ 
+ .checkout{
+   color: #fff;
+ }
+ .checkout:hover{
+  color: #82ae46;
+}
+ 
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -8516,7 +8537,7 @@ h1, h2, h3, h4, h5,
   .btn.btn-primary {
     background: #82ae46;
     border: 1px solid #82ae46;
-    color: #fff; }
+  }
     .btn.btn-primary:hover {
       border: 1px solid #82ae46;
       background: transparent;

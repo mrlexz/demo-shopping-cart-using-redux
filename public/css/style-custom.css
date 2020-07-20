@@ -1,0 +1,19 @@
+/* login custom */
+
+.login-custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-custom {
+    width: 50%;
+}
+/* registef */
+.centered-form{
+	margin-top: 60px;
+}
+
+.centered-form .panel{
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
