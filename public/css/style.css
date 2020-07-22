@@ -25,7 +25,7 @@
   color: #82ae46;
 }
  
-/* productManage */
+/* Management */
 .productManage h3{
   text-align: center;
 }
@@ -40,12 +40,20 @@
   border-color: #ffc107;
 }
 
-.delete{
+.create{
   width: 20%;
 }
 
-.create{
-  width: 20%;
+.ant-modal-title{
+  text-align: center;
+}
+
+.ant-form{
+  margin: 0 auto !important;
+}
+
+.deleteNotify{
+  text-align: center;
 }
 /*  */
 :root {
