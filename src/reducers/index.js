@@ -5,6 +5,7 @@ import menus from './menus';
 import infor from './infor';
 import login from './login';
 import register from './register';
+import userProfile from './userProfile';
 
 const appReducers = combineReducers({
     products,
@@ -12,7 +13,8 @@ const appReducers = combineReducers({
     menus,
     infor,
     login,
-    register
+    register,
+    userProfile
 });
 
 export default appReducers;

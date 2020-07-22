@@ -62,3 +62,11 @@ export const getProduct = (data) => {
         payload: data
     }
 }
+
+export const getUserProfile = (data) => {
+    return {
+        type: types.GET_USER_PROFILE,
+        payload: data
+    }
+}
+
