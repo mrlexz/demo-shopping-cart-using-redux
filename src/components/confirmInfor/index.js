@@ -1,13 +1,15 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actBuy } from './../../actions/index';
+import {callAPI} from '../../services/callAPI';
 const style = {
     display: 'flex'
 }
 const ConfirmInfor = (props) => {
     const infor = props.infor
     let cartItems = props.cartItems;
+    console.log(cartItems);
     const getQuantity = (initStateCarts) => {
         initStateCarts = cartItems;
         let quantity = 0;
@@ -56,6 +58,17 @@ const ConfirmInfor = (props) => {
         }
         return result;
     }
+    const buyProduct = () => {
+        const token = localStorage.getItem("token");
+        const config = {
+            'Authorization' : 'Bearer '+token,
+        }
+        callAPI(cartItems,"http://localhost:8000/order/",'POST' ,config).then((resp) => {
+            if(resp.status===201){
+                return <Redirect to="/success" />
+            }
+        })
+    }
 
     return (
         <div className="cart-total mb-3">
@@ -90,7 +103,7 @@ const ConfirmInfor = (props) => {
             </p>
             <div style={style}>
                 <p><NavLink to="/checkout" className="btn btn-outline-success py-3 px-4">Back</NavLink></p>
-                <p><NavLink to="/success" className="btn btn-outline-success py-3 px-4" onClick={props.buy}>Buy</NavLink></p>
+                <p><NavLink className="btn btn-outline-success py-3 px-4" onClick={buyProduct}>Buy</NavLink></p>
             </div>
         </div>
 

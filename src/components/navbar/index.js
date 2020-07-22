@@ -44,7 +44,7 @@ const Navbar = (props) => {
                         <li className="nav-item cta cta-colored"><NavLink to="/cart" className="nav-link"><span className="icon-shopping_cart"></span>[{cartItems.length}]</NavLink></li>
                         <li className="nav-item"><NavLink to="/user-profile" className="nav-link">User Profile</NavLink></li>
                         {!props.infor.isLogin && <li className="nav-item"><NavLink to="/login" className="nav-link">Login</NavLink></li>}
-                        <li className="nav-item"><NavLink to="/register" className="nav-link">Logon</NavLink></li>
+                        <li className="nav-item"><NavLink to="/register" className="nav-link">Register</NavLink></li>
                     </ul>
                 </div>
             </div>
