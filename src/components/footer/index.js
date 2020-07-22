@@ -7,39 +7,22 @@ const Footer = () => {
                 <div className="row mb-5">
                     <div className="col-md">
                         <div className="ftco-footer-widget mb-4">
-                            <h2 className="ftco-heading-2">Vegefoods</h2>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-                            <ul className="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                                <li className="ftco-animate"><NavLink to="#"><span className="icon-twitter"></span></NavLink></li>
-                                <li className="ftco-animate"><NavLink to="#"><span className="icon-facebook"></span></NavLink></li>
-                                <li className="ftco-animate"><NavLink to="#"><span className="icon-instagram"></span></NavLink></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="col-md">
-                        <div className="ftco-footer-widget mb-4 ml-md-5">
-                            <h2 className="ftco-heading-2">Menu</h2>
-                            <ul className="list-unstyled">
-                                <li><NavLink to="#" className="py-2 d-block">Shop</NavLink></li>
-                                <li><NavLink to="#" className="py-2 d-block">About</NavLink></li>
-                                <li><NavLink to="#" className="py-2 d-block">Journal</NavLink></li>
-                                <li><NavLink to="/group-profile" className="py-2 d-block">Contact Us</NavLink></li>
-                            </ul>
+                            <h2 className="ftco-heading-2">Beer club</h2>
                         </div>
                     </div>
                     <div className="col-md-4">
                         <div className="ftco-footer-widget mb-4">
-                            <h2 className="ftco-heading-2">Help</h2>
+                            <h2 className="ftco-heading-2">Member</h2>
                             <div className="d-flex">
                                 <ul className="list-unstyled mr-l-5 pr-l-3 mr-4">
-                                    <li><NavLink to="#" className="py-2 d-block">Shipping Information</NavLink></li>
-                                    <li><NavLink to="#" className="py-2 d-block">Returns &amp; Exchange</NavLink></li>
-                                    <li><NavLink to="#" className="py-2 d-block">Terms &amp; Conditions</NavLink></li>
-                                    <li><NavLink to="#" className="py-2 d-block">Privacy Policy</NavLink></li>
+                                    <li><NavLink to="#" className="py-2 d-block">Dat Vu</NavLink></li>
+                                    <li><NavLink to="#" className="py-2 d-block">Van Quy</NavLink></li>
+                                    <li><NavLink to="#" className="py-2 d-block">Trung Hau</NavLink></li>
+                                    <li><NavLink to="#" className="py-2 d-block">Thanh Nhu</NavLink></li>
                                 </ul>
                                 <ul className="list-unstyled">
-                                    <li><NavLink to="#" className="py-2 d-block">FAQs</NavLink></li>
-                                    <li><NavLink to="#" className="py-2 d-block">Contact</NavLink></li>
+                                    <li><NavLink to="#" className="py-2 d-block">Thuy Ngoc</NavLink></li>
+                                    <li><NavLink to="#" className="py-2 d-block">Quang</NavLink></li>
                                 </ul>
                             </div>
                         </div>
