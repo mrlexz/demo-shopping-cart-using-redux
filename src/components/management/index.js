@@ -177,13 +177,6 @@ const CreateForm = (props) => {
                 className="form-custom"
             >
                 <Form.Item
-                    label="Id"
-                    name="id"
-                    rules={[{ required: true, message: 'Please input your id!' }]}>
-                    <Input />
-                </Form.Item>
-
-                <Form.Item
                     label="Name"
                     name="name"
                     rules={[{ required: true, message: 'Please input your name!' }]}>
@@ -222,12 +215,12 @@ const EditForm = (props) => {
                 name="basic"
                 className="form-custom"
             >
-                <Form.Item
+                {/* <Form.Item
                     label="Id"
                     name="id"
-                    rules={[{ required: true, message: 'Please input your id!' }]}>
+                    rules={[{ required: false, message: 'Please input your id!' }]}>
                     <Input />
-                </Form.Item>
+                </Form.Item> */}
 
                 <Form.Item
                     label="Name"
