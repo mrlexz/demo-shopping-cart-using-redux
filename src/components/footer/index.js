@@ -8,6 +8,7 @@ const Footer = () => {
                     <div className="col-md">
                         <div className="ftco-footer-widget mb-4">
                             <h2 className="ftco-heading-2">Beer club</h2>
+                            <p>Where there is a will, there is a way</p>
                         </div>
                     </div>
                     <div className="col-md-4">
@@ -22,19 +23,19 @@ const Footer = () => {
                                 </ul>
                                 <ul className="list-unstyled">
                                     <li><NavLink to="#" className="py-2 d-block">Thuy Ngoc</NavLink></li>
-                                    <li><NavLink to="#" className="py-2 d-block">Quang</NavLink></li>
+                                    <li><NavLink to="#" className="py-2 d-block">Quang Thanh</NavLink></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div className="col-md">
                         <div className="ftco-footer-widget mb-4">
-                            <h2 className="ftco-heading-2">Have a Questions?</h2>
+                            <h2 className="ftco-heading-2">We want to 10 scores</h2>
                             <div className="block-23 mb-3">
                                 <ul>
-                                    <li><span className="icon icon-map-marker"></span><span className="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                                    <li><NavLink to="#"><span className="icon icon-phone"></span><span className="text">+2 392 3929 210</span></NavLink></li>
-                                    <li><NavLink to="#"><span className="icon icon-envelope"></span><span className="text">info@yourdomain.com</span></NavLink></li>
+                                    <li><span className="icon icon-map-marker"></span><span className="text">Thu Duc district, Ho Chi Minh city, Viet Nam</span></li>
+                                    <li><NavLink to="#"><span className="icon icon-phone"></span><span className="text">0999999999</span></NavLink></li>
+                                    <li><NavLink to="#"><span className="icon icon-envelope"></span><span className="text">pass exam</span></NavLink></li>
                                 </ul>
                             </div>
                         </div>
@@ -43,7 +44,8 @@ const Footer = () => {
                 <div className="row">
                     <div className="col-md-12 text-center">
                         <p>
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i className="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" rel="noopener">Colorlib</a>
+                            Thank you very much!!!
+                            {/* Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i className="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" rel="noopener">Colorlib</a> */}
                         </p>
                     </div>
                 </div>
