@@ -9,6 +9,9 @@ const login = (state = initialState, action) => {
         case types.LOG_IN:
             localStorage.setItem("token", action.payload.access)
             return {...state, isLogin: true, ...action.payload};
+        case types.LOG_OUT:
+            state = {isLogin: false};
+            return state;
         default:
             return state;
     }

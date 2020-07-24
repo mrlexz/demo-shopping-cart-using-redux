@@ -2,7 +2,7 @@ import React from 'react';
 import {Button} from 'antd';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
-import { getUserProfile } from './../../actions/index';
+import { getUserProfile, logout } from './../../actions/index';
 import {callAPI} from '../../services/callAPI';
 const style = {
     backgroundImage: "url('images/img_bg_1.jpg')"
@@ -27,7 +27,7 @@ const UserProfile = (props) => {
 
     const logout = () => {
         localStorage.clear();
-        props.getUser({});
+        props.logout();
     }
 
     return (
@@ -60,7 +60,7 @@ const UserProfile = (props) => {
 
             <div className="row">
                 <div className="col-sm-5 proItem">
-                        <span className="profileItem">Sex: {user?.gender == 1 ? 'Male' : 'Female'}</span>
+                        <span className="profileItem">Sex: {user?.gender == 1 ? 'Male' : user?.gender == 2 ? 'Female' : null}</span>
                 </div>
             </div>
 
@@ -83,6 +83,7 @@ const UserProfile = (props) => {
 const mapStateToProps = (state) => {
     return {
         user: state.userProfile,
+        infor: state.login,
     }
   }
   
@@ -90,6 +91,9 @@ const mapStateToProps = (state) => {
     return {
         getUser: (data) => {
             dispatch(getUserProfile(data));
+        },
+        logout: () => {
+            dispatch(logout());
         }
     }
   }

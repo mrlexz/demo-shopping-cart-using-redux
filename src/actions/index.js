@@ -70,3 +70,9 @@ export const getUserProfile = (data) => {
     }
 }
 
+export const logout = () => {
+    return {
+        type: types.LOG_OUT,
+    }
+}
+

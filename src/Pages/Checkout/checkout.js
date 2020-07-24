@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import Footer from '../../components/footer';
 import Navbar from '../../components/navbar';
 import Header from '../../components/header';
@@ -6,7 +7,11 @@ import Banner from '../../components/banner';
 import Sub from '../../components/subcribe';
 import Billing from '../../components/billingDetails';
 import CartTotals from '../../components/cartTotals';
-const Checkout = () => {
+import { connect } from 'react-redux';
+const Checkout = (props) => {
+    if(!props.infor.isLogin){
+        return <Redirect to="/login" />
+    }
     return (
         <div className="goto-here">
             <Header />
@@ -31,4 +36,10 @@ const Checkout = () => {
         </div>
     )
 }
-export default Checkout;
+
+const mapStateToProps = state => {
+    return {
+        infor: state.login,
+    }
+}
+export default connect(mapStateToProps)(Checkout);

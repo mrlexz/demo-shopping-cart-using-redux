@@ -1,10 +1,14 @@
 import React from 'react';
 import CartItem from '../cartItem';
 import CartTotals from '../cartTotals';
-import { NavLink } from 'react-router-dom';
+import { NavLink , Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 const CartView = (props) => {
     let cartItems = props.cartItems;
+
+    if(!props.infor.isLogin){
+        return <Redirect to="/login" />
+    }
     return (
         <section className="ftco-section ftco-cart">
             <div className="container">
@@ -47,6 +51,7 @@ const CartView = (props) => {
 
 const mapStateToProps = state => {
     return {
+        infor: state.login,
         cartItems: state.carts
     }
 }
