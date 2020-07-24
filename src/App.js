@@ -11,7 +11,10 @@ import Login from './Pages/Login/login';
 import Register from './Pages/Register/register';
 import UserProfile from './Pages/UserProfile/userProfile';
 import GroupProfile from './Pages/GroupProfile/index';
+import ProductManage from './Pages/ProductManage/productManage';
+import Management from './Pages/Management/management';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +31,8 @@ function App() {
           <Route path="/register" exact component={Register} />
           <Route path="/user-profile" exact component={UserProfile} />
           <Route path="/group-profile" exact component={GroupProfile} />
+          <Route path="/product-manage" exact component={ProductManage} />
+          <Route path="/management" exact component={Management} />
           <Route component={NotFound} />
         </Switch>
       </div>
