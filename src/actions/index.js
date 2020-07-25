@@ -76,3 +76,24 @@ export const logout = () => {
     }
 }
 
+export const getProductManagement = (data) => {
+    return {
+        type: types.PRODUCT_MANAGE,
+        payload: data
+    }
+}
+
+export const getOderManagement = (data) => {
+    return {
+        type: types.ORDER_MANAGE,
+        payload: data
+    }
+}
+
+export const getUserManagement = (data) => {
+    return {
+        type: types.USER_MANAGE,
+        payload: data
+    }
+}
+

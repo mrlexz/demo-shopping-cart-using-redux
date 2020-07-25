@@ -17,7 +17,7 @@ const Footer = () => {
                             <div className="d-flex">
                                 <ul className="list-unstyled mr-l-5 pr-l-3 mr-4">
                                     <li><NavLink to="#" className="py-2 d-block">Dat Vu</NavLink></li>
-                                    <li><NavLink to="#" className="py-2 d-block">Van Quy</NavLink></li>
+                                    <li><NavLink to="#" className="py-2 d-block">Van Qui</NavLink></li>
                                     <li><NavLink to="#" className="py-2 d-block">Trung Hau</NavLink></li>
                                     <li><NavLink to="#" className="py-2 d-block">Thanh Nhu</NavLink></li>
                                 </ul>

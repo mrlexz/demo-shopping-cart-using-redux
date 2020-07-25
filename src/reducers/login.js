@@ -2,7 +2,6 @@ import * as types from './../constants/ActionType';
 import {callAPI} from '../services/callAPI';
 var initialState = {
     isLogin: false,
-
 };
 const login = (state = initialState, action) => {
     switch (action.type) {
