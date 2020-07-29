@@ -9,7 +9,7 @@ const DetailsProduct = (props) => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-6 mb-5 ftco-animate fadeInUp ftco-animated">
-                        <NavLink to="#" className="image-popup"><img src={product.src} className="img-fluid" alt="Colorlib Template" /></NavLink>
+                        <NavLink to="#" className="image-popup"><img src={product.picture} className="img-fluid" alt="Colorlib Template" /></NavLink>
                     </div>
                     <div className="col-lg-6 product-details pl-md-5 ftco-animate fadeInUp ftco-animated">
                         <h3>{product.name}</h3>

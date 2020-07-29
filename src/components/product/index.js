@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const Product = (props) => {
     const product = props.product;
-    const image = product.src;
+    const image = product.picture;
     const onAddToCart = (product) => {
         props.onAddToCart(product);
     }
