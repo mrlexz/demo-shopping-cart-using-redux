@@ -1,54 +1,130 @@
 import React from 'react';
-import { Form, Input, Modal, Tabs, Table } from 'antd';
-import {deleteOder, deleteProduct, deleteUser} from './func'
+import { Form, Input, Modal, Tabs, Table, Select, notification, Upload, Button, message } from 'antd';
+import {deleteOder, deleteProduct, deleteUser} from './func';
+import {callAPI} from '../../services/callAPI';
+import {CATEGORY} from './constants';
 
 const { TabPane } = Tabs;
+const { Option } = Select;
 function callback(key) {
     console.log(key);
 }
+function upload() {
+    //get the input and the file
+    var input = document.querySelector('input[type=file]'),
+    file = input.files[0];
 
-class Management extends React.Component {
-    state = { 
-        visibleCreate: false, 
-        visibleEdit: false, 
-        visibleDeletePro: false,
-        visibleDeleteUser: false,
-        visibleDeleteOrder: false,
-        valueProduct: {},
-     };
+    //if the file isn't a image nothing happens.
+    //you are free to implement a fallback
+    if (!file || !file.type.match(/image.*/)) return;
 
-    filterProduct = (id, arr) => {
+    //Creates the FormData object and attach to a key name "file"
+    var fd = new FormData();
+    fd.append("picture", file);
+    return fd;
+}
+function Management (props) {
+      const  [visibleCreate, setVisibleCreate] = React.useState(false);
+      const  [visibleEdit, setVisibleEdit] = React.useState(false); 
+      const  [visibleDeletePro, setVisibleDeletePro] = React.useState(false);
+      const  [visibleDeleteUser, setVisibleDeleteUser] = React.useState(false);
+      const  [visibleDeleteOrder, setVisibleDeleteOrder] = React.useState(false);
+      const  [valueProduct, setValueProduct] = React.useState({});
+
+    const filterProduct = (id, arr) => {
         const result = arr?.find(res => res.id === id);
         return result?.name || null;
     }
 
-    filterUser = (id, arr) => {
+    const filterUser = (id, arr) => {
         const result = arr?.find(res => res.id === id)
         return result?.username || null;
     }
 
-    showModalCreate = () => {
-        this.setState({ visibleCreate: true });
+    const showModalCreate = () => {
+        setVisibleCreate(true)
     }
-    handleCancelCreate = () => {
-        this.setState({ visibleCreate: false });
-    }
-
-    showModalEdit = (product) => () => {
-        console.log(product);
-        this.setState({ visibleEdit: true });
-        this.setState({
-            valueProduct: product
-        })
-    }
-    handleCancelEdit = () => {
-        this.setState({ visibleEdit: false });
-        this.setState({
-            valueProduct: {}
-        })
+    const handleCancelCreate = () => {
+        setVisibleCreate(false)
     }
 
-    showModalDeletePro = (product) => () => {
+    const handleCreate = (values) => {
+        console.log(values);
+        const token = localStorage.getItem("token");
+        const config = {
+            'Authorization' : 'Bearer '+token,
+            'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>'
+        }
+
+        const value = upload();
+        value.append("name", values.name);
+        value.append("category", values.category);
+        value.append("price", values.price);
+        callAPI(value,'http://localhost:8000/beers/', 'POST', config).then(resp => {
+            if(resp.status === 200) {
+                notification["success"]({
+                message: 'Create success',
+                description:
+                'Create success!!!',
+                });
+                }
+                handleCancelCreate();
+                setTimeout(()=> {
+                    window.location.reload();
+                },500);
+            }).catch(err => {
+                notification["error"]({
+                message: 'Create error',
+                description:
+                'Create error!!!',
+            });
+            console.log(err);
+        })
+    }
+
+    const showModalEdit = (product) => () => {
+        setVisibleEdit(true);
+        setValueProduct(product);
+    }
+    const handleCancelEdit = () => {
+        setVisibleEdit(false);
+        setValueProduct({});
+    }
+
+    const handleUpdate = (values) => {
+        const token = localStorage.getItem("token");
+        const config = {
+            'Authorization' : 'Bearer '+token,
+            'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>'
+        }
+
+        const value = upload();
+        value.append("name", values.name);
+        value.append("category", values.category);
+        value.append("price", values.price);
+        callAPI(value,`http://localhost:8000/beers/${values.id}/`, 'PUT', config).then(resp => {
+            if(resp.status === 200) {
+                notification["success"]({
+                message: 'Update success',
+                description:
+                'Update success!!!',
+                });
+                }
+                handleCancelEdit();
+                setTimeout(()=> {
+                    window.location.reload();
+                },500);
+            }).catch(err => {
+                notification["error"]({
+                message: 'Update error',
+                description:
+                'Update error!!!',
+            });
+            console.log(err);
+        })
+    }
+
+    const showModalDeletePro = (product) => () => {
         Modal.confirm({
             maskClosable: true,
             title: "Delete Product ?",
@@ -57,11 +133,14 @@ class Management extends React.Component {
             cancelText: "No",
             onOk() {
                 deleteProduct(product.id);
+                setTimeout(()=> {
+                    window.location.reload();
+                },500);
             },
           });
     }
 
-    showModalDeleteUser = (user) => () => {
+    const showModalDeleteUser = (user) => () => {
         Modal.confirm({
             maskClosable: true,
             title: "Delete User ?",
@@ -70,11 +149,14 @@ class Management extends React.Component {
             cancelText: "No",
             onOk() {
               deleteUser(user.id);
+              setTimeout(()=> {
+                window.location.reload();
+            },500);
             },
           });
     }
 
-    showModalDeleteOrder = (order) => () => {
+    const showModalDeleteOrder = (order) => () => {
         Modal.confirm({
             maskClosable: true,
             title: "Delete Order ?",
@@ -83,11 +165,14 @@ class Management extends React.Component {
             cancelText: "No",
             onOk() {
                 deleteOder(order.id);
+                setTimeout(()=> {
+                    window.location.reload();
+                },500);
             },
           });
     }
 
-    columnProduct = [
+    const columnProduct = [
         {
             title: 'Id',
             dataIndex: 'id',
@@ -117,14 +202,14 @@ class Management extends React.Component {
             key: 'action',
             render: (text, record) => {
                 return <div>
-                 <button type="button" className="btn btn-warning edit" onClick={this.showModalEdit(record)}>Edit</button>
-                 <button type="button" className="btn btn-danger delete" onClick={this.showModalDeletePro(record)}>Delete</button>
+                 <button type="button" className="btn btn-warning edit" onClick={showModalEdit(record)}>Edit</button>
+                 <button type="button" className="btn btn-danger delete" onClick={showModalDeletePro(record)}>Delete</button>
                 </div>
           },
           },
     ];
 
-    columnUser = [
+    const columnUser = [
         {
             title: 'Id',
             dataIndex: 'id',
@@ -164,13 +249,13 @@ class Management extends React.Component {
             key: 'action',
             render: (text, record) => {
                 return <div>
-                 <button type="button" className="btn btn-danger delete" onClick={this.showModalDeleteUser(record)}>Delete</button>
+                 <button type="button" className="btn btn-danger delete" onClick={showModalDeleteUser(record)}>Delete</button>
                 </div>
           },
           },
     ];
 
-    columnOrder = [
+    const columnOrder = [
         {
             title: 'Id',
             dataIndex: 'id',
@@ -182,7 +267,7 @@ class Management extends React.Component {
             dataIndex: 'user',
             key: 'user',
             render: (record) => {
-            return <span>{this.filterUser(record, this.props.users)}</span>
+            return <span>{filterUser(record, props.users)}</span>
             }
           },
           {
@@ -190,7 +275,7 @@ class Management extends React.Component {
             key: 'product',
             dataIndex: 'product',
             render: (record) => {
-            return <span>{this.filterProduct(record, this.props.products)}</span>
+            return <span>{filterProduct(record, props.products)}</span>
             }
           },
           {
@@ -208,43 +293,44 @@ class Management extends React.Component {
             key: 'action',
             render: (text, record) => {
                 return <div>
-                 <button type="button" className="btn btn-danger delete" onClick={this.showModalDeleteOrder(record)}>Delete</button>
+                 <button type="button" className="btn btn-danger delete" onClick={showModalDeleteOrder(record)}>Delete</button>
                 </div>
           },
           },
     ];
 
    
-    render() {
-        console.log(this.props);
+    // render() {
         return (
             <Tabs defaultActiveKey="1" onChange={callback}>
                 <TabPane tab="Product Management" key="1">
                     <div className="productManage">
                         <h3 className="mb-4 billing-heading">Product Management</h3>
-                        <Table columns={this.columnProduct} dataSource={this.props.products} />
-                        <button type="button" className="btn btn-primary py-3 px-4 create" onClick={this.showModalCreate}>Create</button>
+                        <Table columns={columnProduct} dataSource={props.products} />
+                        <button type="button" className="btn btn-primary py-3 px-4 create" onClick={showModalCreate}>Create</button>
                         <CreateForm
-                            visible={this.state.visibleCreate}
-                            onCancel={this.handleCancelCreate}
+                            visible={visibleCreate}
+                            onCancel={handleCancelCreate}
+                            onCreate={handleCreate}
                         />
                         <EditForm
-                            visible={this.state.visibleEdit}
-                            onCancel={this.handleCancelEdit}
-                            value={this.valueProduct}
+                            visible={visibleEdit}
+                            onCancel={handleCancelEdit}
+                            onUpdate={handleUpdate}
+                            value={valueProduct}
                          />
                     </div>
                 </TabPane>
                 <TabPane tab="User Management" key="2">
                     <div className="productManage">
                         <h3 className="mb-4 billing-heading">User Management</h3>
-                        <Table columns={this.columnUser} dataSource={this.props.users} />
+                        <Table columns={columnUser} dataSource={props?.users} />
                     </div>
                 </TabPane>
                 <TabPane tab="Order Management" key="3">
                     <div className="productManage">
                         <h3 className="mb-4 billing-heading">Order Management</h3>
-                        <Table columns={this.columnOrder} dataSource={this.props?.oders} />
+                        <Table columns={columnOrder} dataSource={props?.oders} />
                     </div>
                 </TabPane>
             </Tabs>
@@ -252,7 +338,7 @@ class Management extends React.Component {
 
         )
     }
-}
+// }
 // modal create form Product
 const CreateForm = (props) => {
     const { visible, onCancel, onCreate } = props;
@@ -260,11 +346,15 @@ const CreateForm = (props) => {
         <Modal
             title="Create product"
             visible={visible}
-            onCancel={onCancel}>
+            onCancel={onCancel}
+            okButtonProps={{form:'product-form', key: 'submit', htmlType: 'submit'}}
+            >
             <Form
+                id="product-form"
                 layout="vertical"
                 name="basic"
                 className="form-custom"
+                onFinish={onCreate}
             >
                 <Form.Item
                     label="Name"
@@ -284,9 +374,20 @@ const CreateForm = (props) => {
                     label="Category"
                     name="category"
                     rules={[{ required: true, message: 'Please input your category!' }]}>
-                    <Input />
+                    <Select>
+                        {CATEGORY.map(item => {
+                            return <Option value={item.value}>{item.name}</Option>
+                        })}
+                    </Select>
                 </Form.Item>
 
+                <Form.Item
+                    label="Photo"
+                    name="picture"
+                    rules={[{ required: true, message: 'Please input your category!' }]}
+                    >
+                    <input type="file" />
+                </Form.Item>
             </Form>
         </Modal>
     );
@@ -294,20 +395,34 @@ const CreateForm = (props) => {
 
 // modal edit form Product
 const EditForm = (props) => {
-    const { visible, onCancel, value} = props;
+    const { visible, onCancel, value, onUpdate} = props;
     return (
         <Modal
             title="Edit product"
             visible={visible}
-            onCancel={onCancel}>
+            onCancel={onCancel}
+            okButtonProps={{form:'product-form-update', key: 'submit', htmlType: 'submit'}}
+            >
             <Form
+                id="product-form-update"
                 layout="vertical"
                 name="basic"
                 className="form-custom"
+                onFinish={onUpdate}
             >
+                <Form.Item
+                    label="Id"
+                    name="id"
+                    style={{display: 'none'}}
+                    initialValue={value?.id || null}
+                    rules={[{ required: true, message: 'Please input your name!' }]}>
+                    <Input />
+                </Form.Item>
+    
                 <Form.Item
                     label="Name"
                     name="name"
+                    initialValue={value?.name || null}
                     rules={[{ required: true, message: 'Please input your name!' }]}>
                     <Input />
                 </Form.Item>
@@ -315,6 +430,7 @@ const EditForm = (props) => {
                 <Form.Item
                     label="Price"
                     name="price"
+                    initialValue={value?.price || null}
                     rules={[{ required: true, message: 'Please input your price!' }]}>
                     <Input />
                 </Form.Item>
@@ -322,8 +438,21 @@ const EditForm = (props) => {
                 <Form.Item
                     label="Category"
                     name="category"
+                    initialValue={value?.category || null}
                     rules={[{ required: true, message: 'Please input your category!' }]}>
-                    <Input />
+                    <Select>
+                        {CATEGORY.map(item => {
+                            return <Option value={item.value}>{item.name}</Option>
+                        })}
+                    </Select>
+                </Form.Item>
+
+                <Form.Item
+                    label="Photo"
+                    name="picture"
+                    rules={[{ required: true, message: 'Please input your category!' }]}
+                    >
+                    <input type="file" />
                 </Form.Item>
 
             </Form>

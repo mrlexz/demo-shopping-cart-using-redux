@@ -6,7 +6,6 @@ var initialState = {
 const register = (state = initialState, action) => {
     switch (action.type) {
         case types.REGISTER:
-            console.log(state);
             return state;
         default:
             return state;

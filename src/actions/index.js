@@ -97,3 +97,10 @@ export const getUserManagement = (data) => {
     }
 }
 
+export const getProductApri = (data) => {
+    return {
+        type: types.GET_PRODUCT_APRI,
+        payload: data
+    }
+}
+

@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import productApris from './productApri';
 import products from './products';
 import carts from './carts';
 import menus from './menus';
@@ -16,7 +17,8 @@ const appReducers = combineReducers({
     login,
     register,
     userProfile,
-    management
+    management,
+    productApris
 });
 
 export default appReducers;

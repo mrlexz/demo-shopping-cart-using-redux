@@ -9,7 +9,8 @@ import Billing from '../../components/billingDetails';
 import CartTotals from '../../components/cartTotals';
 import { connect } from 'react-redux';
 const Checkout = (props) => {
-    if(!props.infor.isLogin){
+    const isLogin = localStorage.getItem("isLogin");
+    if(isLogin!=="true"){
         return <Redirect to="/login" />
     }
     return (

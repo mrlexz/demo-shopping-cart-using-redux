@@ -10,6 +10,7 @@ const style = {
 const UserProfile = (props) => {
 
     const {user} = props;
+    const [isLogout, setIsLogout] = React.useState(false);
     React.useEffect(()=> {
         const token = localStorage.getItem("token");
         const config = {
@@ -28,7 +29,13 @@ const UserProfile = (props) => {
     const logout = () => {
         localStorage.clear();
         props.logout();
+        setIsLogout(true);
     }
+
+    if(isLogout) {
+        return <Redirect to="/login" />
+    }
+
 
     return (
         <div className="userProfile">

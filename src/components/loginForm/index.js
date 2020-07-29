@@ -18,6 +18,7 @@ const tailLayout = {
 const Login = (props) => {
 
   const [error, setError] = React.useState();
+  const isLogin = localStorage.getItem("isLogin");
 
   const onFinish = values => {
       callAPI(values, 'http://localhost:8000/auth/token/', 'POST').then((resp) => {
@@ -49,7 +50,7 @@ const Login = (props) => {
     console.log('Failed:', errorInfo);
   };
 
-  if(props.infor.isLogin){
+  if(isLogin==="true"){
     return <Redirect to="/" />
   }
 
