@@ -8,13 +8,14 @@ const CartItem = (props) => {
         height: '20px',
         margin: '5px'
     }
+ 
     let cartItem = props.cartItem.product;
     let quantity = props.quantity;
     let total = cartItem.price * quantity;
     return (
         <tr className="text-center">
             <td className="product-remove"><NavLink to="#" onClick={() => props.deleteItem(cartItem)}><span className="ion-ios-close" /></NavLink></td>
-            <td className="image-prod"><div className="img" style={{ backgroundImage: `url(${cartItem.src})` }} /></td>
+            <td className="image-prod"><div className="img" style={{ backgroundImage: `url(${cartItem.picture})` }} /></td>
             <td className="product-name">
                 <h3>{cartItem.name}</h3>
             </td>

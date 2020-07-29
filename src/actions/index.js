@@ -62,3 +62,45 @@ export const getProduct = (data) => {
         payload: data
     }
 }
+
+export const getUserProfile = (data) => {
+    return {
+        type: types.GET_USER_PROFILE,
+        payload: data
+    }
+}
+
+export const logout = () => {
+    return {
+        type: types.LOG_OUT,
+    }
+}
+
+export const getProductManagement = (data) => {
+    return {
+        type: types.PRODUCT_MANAGE,
+        payload: data
+    }
+}
+
+export const getOderManagement = (data) => {
+    return {
+        type: types.ORDER_MANAGE,
+        payload: data
+    }
+}
+
+export const getUserManagement = (data) => {
+    return {
+        type: types.USER_MANAGE,
+        payload: data
+    }
+}
+
+export const getProductApri = (data) => {
+    return {
+        type: types.GET_PRODUCT_APRI,
+        payload: data
+    }
+}
+

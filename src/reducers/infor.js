@@ -9,7 +9,6 @@ const infor = (state = initialState, action) => {
             state = abc;
             return state;
         case types.SUBMIT_FORM:
-            console.log(state);
             return state;
         default:
             return state;

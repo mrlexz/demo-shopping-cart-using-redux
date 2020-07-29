@@ -17,6 +17,10 @@ import { connect } from 'react-redux';
 //     )
 // }
 const Navbar = (props) => {
+    const isLogin = localStorage.getItem("isLogin");
+    const userName = localStorage.getItem("userName");
+    const isAdmin = localStorage.getItem("isAdmin");
+    console.log(isAdmin);
     let cartItems = props.cartItems;
     // let menus = props.menus;
     // const showMenus = (menus) => {
@@ -40,11 +44,11 @@ const Navbar = (props) => {
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item"><NavLink to="/products" className="nav-link">Products</NavLink></li>
                         <li className="nav-item"><NavLink to="/checkout" className="nav-link">Checkout</NavLink></li>
-                        {/* {showMenus(menus)} */}
                         <li className="nav-item cta cta-colored"><NavLink to="/cart" className="nav-link"><span className="icon-shopping_cart"></span>[{cartItems.length}]</NavLink></li>
-                        <li className="nav-item"><NavLink to="/user-profile" className="nav-link">User Profile</NavLink></li>
-                        {!props.infor.isLogin && <li className="nav-item"><NavLink to="/login" className="nav-link">Login</NavLink></li>}
-                        <li className="nav-item"><NavLink to="/register" className="nav-link">Logon</NavLink></li>
+                        {(isLogin=="true") && <li className="nav-item"><NavLink to="/user-profile" className="nav-link">{userName}</NavLink></li>}
+                        {!(isLogin=="true") && <li className="nav-item"><NavLink to="/login" className="nav-link">Login</NavLink></li>}
+                        {isAdmin=="true" && <li className="nav-item"><NavLink to="/management" className="nav-link">Managenement</NavLink></li>}
+                        {!(isLogin=="true") && <li className="nav-item"><NavLink to="/register" className="nav-link">Register</NavLink></li>}
                     </ul>
                 </div>
             </div>
