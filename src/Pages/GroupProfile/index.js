@@ -7,7 +7,6 @@ import GroupProfile from '../../components/GroupProfile';
 const Home = () => {
     return (
         <div className="goto-here">
-            <Header />
             <Navbar />
             <GroupProfile />
             <Footer />

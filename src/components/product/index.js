@@ -9,6 +9,7 @@ const Product = (props) => {
     }
     return (
         <div className="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
+            
             <div className="product">
                 <NavLink to={`/product-details/${product.id}`} className="img-prod"><img className="img-fluid" src={image} alt="Colorlib Template" />
                     <div className="overlay" />
