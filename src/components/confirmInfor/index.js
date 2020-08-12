@@ -8,7 +8,8 @@ const style = {
     display: 'flex'
 }
 const ConfirmInfor = (props) => {
-    const infor = props.infor
+    const infor = props.infor;
+    const { user } = props;
     let cartItems = props.cartItems;
     const [isBuy, setIsBuy] = React.useState(false);
     const getQuantity = (initStateCarts) => {
@@ -84,19 +85,15 @@ const ConfirmInfor = (props) => {
             <h3>Your Infor</h3>
             <p className="d-flex">
                 <span>Name:</span>
-                <span>{infor.txtFName} {infor.txtLName}</span>
+                <span>{user?.first_name} {user?.last_name}</span>
             </p>
             <p className="d-flex">
-                <span>Address:</span>
-                <span>{infor.txtAddress}, {infor.txtCity}, {country(infor.sltCountry)}</span>
-            </p>
-            <p className="d-flex">
-                <span>Phone:</span>
-                <span>{infor.txtPhone}</span>
+                <span>Sex:</span>
+                <span>{user?.gender == 1 ? 'Male' : user?.gender == 2 ? 'Female' : null}</span>
             </p>
             <p className="d-flex">
                 <span>Email:</span>
-                <span>{infor.txtEmail}</span>
+                <span>{user?.email}</span>
             </p>
             <span>Product: </span>
             {cartItems.map((cart, index) => {
@@ -121,6 +118,7 @@ const ConfirmInfor = (props) => {
 const mapStateToProps = state => {
     return {
         infor: state.infor,
+        user: state.userProfile,
         cartItems: state.carts
     }
 }

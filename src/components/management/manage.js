@@ -3,6 +3,8 @@ import { Form, Input, Modal, Tabs, Table, Select, notification, Upload, Button, 
 import {deleteOder, deleteProduct, deleteUser} from './func';
 import {callAPI} from '../../services/callAPI';
 import {CATEGORY} from './constants';
+import category from '../../reducers/category';
+import { connect } from 'react-redux';
 
 const { TabPane } = Tabs;
 const { Option } = Select;
@@ -30,6 +32,7 @@ function Management (props) {
       const  [visibleDeleteUser, setVisibleDeleteUser] = React.useState(false);
       const  [visibleDeleteOrder, setVisibleDeleteOrder] = React.useState(false);
       const  [valueProduct, setValueProduct] = React.useState({});
+      let categorys = props.category;
 
     const filterProduct = (id, arr) => {
         const result = arr?.find(res => res.id === id);
@@ -312,12 +315,14 @@ function Management (props) {
                             visible={visibleCreate}
                             onCancel={handleCancelCreate}
                             onCreate={handleCreate}
+                            categorys={categorys}
                         />
                         <EditForm
                             visible={visibleEdit}
                             onCancel={handleCancelEdit}
                             onUpdate={handleUpdate}
                             value={valueProduct}
+                            categorys={categorys}
                          />
                     </div>
                 </TabPane>
@@ -341,7 +346,9 @@ function Management (props) {
 // }
 // modal create form Product
 const CreateForm = (props) => {
-    const { visible, onCancel, onCreate } = props;
+    const { visible, onCancel, onCreate,categorys } = props;
+    console.log(categorys);
+
     return (
         <Modal
             title="Create product"
@@ -375,8 +382,8 @@ const CreateForm = (props) => {
                     name="category"
                     rules={[{ required: true, message: 'Please input your category!' }]}>
                     <Select>
-                        {CATEGORY.map(item => {
-                            return <Option value={item.value}>{item.name}</Option>
+                        {categorys?.map(item => {
+                            return <Option value={item.id}>{item.name}</Option>
                         })}
                     </Select>
                 </Form.Item>
@@ -395,7 +402,7 @@ const CreateForm = (props) => {
 
 // modal edit form Product
 const EditForm = (props) => {
-    const { visible, onCancel, value, onUpdate} = props;
+    const { visible, onCancel, value, onUpdate, categorys} = props;
     return (
         <Modal
             title="Edit product"
@@ -441,8 +448,8 @@ const EditForm = (props) => {
                     initialValue={value?.category || null}
                     rules={[{ required: true, message: 'Please input your category!' }]}>
                     <Select>
-                        {CATEGORY.map(item => {
-                            return <Option value={item.value}>{item.name}</Option>
+                        {categorys.map(item => {
+                            return <Option value={item.id}>{item.name}</Option>
                         })}
                     </Select>
                 </Form.Item>
@@ -459,5 +466,9 @@ const EditForm = (props) => {
         </Modal>
     );
 };
-
-export default Management;
+const mapStateToProps = (state) => {
+    return {
+        category: state.category,
+    }
+};
+export default connect(mapStateToProps)(Management);

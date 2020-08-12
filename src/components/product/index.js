@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+
 const Product = (props) => {
     const product = props.product;
     const image = product.picture;
@@ -8,6 +9,8 @@ const Product = (props) => {
         props.onAddToCart(product);
     }
     return (
+        
+        
         <div className="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
             
             <div className="product">
@@ -36,6 +39,7 @@ const Product = (props) => {
                 </div>
             </div>
         </div>
+        
     );
 }
 
