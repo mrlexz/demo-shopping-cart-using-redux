@@ -30,7 +30,7 @@ class Billing extends React.Component {
         return (
             <div className="col-xl-7 ftco-animate fadeInUp ftco-animated">
                 <form className="billing-form" >
-                    <h3 className="mb-4 billing-heading">Billing Details</h3>
+                    <h3 className="mb-4 billing-heading" >Billing Details</h3>
                     <Payment SubmitFormHand={this.onSubmitFormHandler} />
                 </form>
             </div>

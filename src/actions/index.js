@@ -41,6 +41,12 @@ export const actBuy = () => {
         type: types.BUY
     }
 }
+export const getCategory = (data) => {
+    return {
+        type: types.GET_CATEGORY,
+        payload: data
+    }
+}
 
 export const register = (data) => {
     return {

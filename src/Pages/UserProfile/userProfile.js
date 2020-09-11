@@ -4,12 +4,12 @@ import Navbar from '../../components/navbar';
 import Header from '../../components/header';
 import UserProfile from '../../components/userProfile';
 const Home = () => {
-    return (
-        <div className="goto-here">
-            <Header />
-            <Navbar />
-            <UserProfile />
-            <Footer />
+    return ( 
+    <div className = "goto-here" >
+        <Header />
+        <Navbar / >
+        <UserProfile / >
+        <Footer / >
         </div>
     )
 }

@@ -19,7 +19,7 @@ function App() {
     <BrowserRouter>
       <div className='container'>
         <Switch>
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact component={Products} />
           <Route path="/products" exact component={Products} />
           <Route path="/product-details/:id" exact component={ProductDetails} />
           <Route path="/cart" exact component={Cart} />

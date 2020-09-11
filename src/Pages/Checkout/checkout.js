@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Footer from '../../components/footer';
 import Navbar from '../../components/navbar';
 import Header from '../../components/header';
@@ -10,14 +10,13 @@ import CartTotals from '../../components/cartTotals';
 import { connect } from 'react-redux';
 const Checkout = (props) => {
     const isLogin = localStorage.getItem("isLogin");
-    if(isLogin!=="true"){
+    if (isLogin !== "true") {
         return <Redirect to="/login" />
     }
     return (
         <div className="goto-here">
             <Header />
             <Navbar />
-            <Banner />
             <section className="ftco-section">
                 <div className="container">
                     <div className="row justify-content-center">

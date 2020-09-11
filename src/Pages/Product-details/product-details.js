@@ -13,19 +13,20 @@ const ProductDetails = (props) => {
         return index;
     }
     return (
-        <div className="goto-here">
-            <Header />
-            <Navbar />
-            <DetailsProduct product={props.product_detail_id[findProductInCart(props.products, props.match.params.id)]} />
-            <Sub />
-            <Footer />
+        <div className="goto-here" >
+        <Header />
+        <Navbar />
+        < DetailsProduct product={props.product_detail_id[findProductInCart(props.products, props.match.params.id)]}
+        /> 
+        <Sub />
+        <Footer />
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        product_detail_id: state.products,
+            product_detail_id: state.products,
         products: state.products
     }
 }

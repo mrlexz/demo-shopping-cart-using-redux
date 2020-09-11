@@ -8,6 +8,7 @@ import login from './login';
 import register from './register';
 import userProfile from './userProfile';
 import management from './management';
+import category from './category';
 
 const appReducers = combineReducers({
     products,
@@ -18,7 +19,8 @@ const appReducers = combineReducers({
     register,
     userProfile,
     management,
-    productApris
+    productApris,
+    category
 });
 
 export default appReducers;
