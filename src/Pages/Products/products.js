@@ -3,17 +3,16 @@ import ProductView from '../../components/productView';
 import Footer from '../../components/footer';
 import Navbar from '../../components/navbar';
 import Header from '../../components/header';
-import Banner from '../../components/banner';
 import Sub from '../../components/subcribe';
 const Products = () => {
-    return (
-        <div className="goto-here">
-            <Header />
-            <Navbar />
-            <Banner />
-            <ProductView />
-            <Sub />
-            <Footer />
+    const isLogin = localStorage.getItem("isLogin");
+    return ( 
+        <div className = "goto-here" >
+        <Header />
+        <Navbar / >
+        <h3 style={{textAlign:'center', marginTop:'20px'}}>Products</h3>
+        <ProductView / >
+        <Footer / >
         </div>
     )
 }

@@ -1,14 +1,18 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+
 const Product = (props) => {
     const product = props.product;
-    const image = product.src;
+    const image = product.picture;
     const onAddToCart = (product) => {
         props.onAddToCart(product);
     }
     return (
+        
+        
         <div className="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
+            
             <div className="product">
                 <NavLink to={`/product-details/${product.id}`} className="img-prod"><img className="img-fluid" src={image} alt="Colorlib Template" />
                     <div className="overlay" />
@@ -35,6 +39,7 @@ const Product = (props) => {
                 </div>
             </div>
         </div>
+        
     );
 }
 

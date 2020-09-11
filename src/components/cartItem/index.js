@@ -5,24 +5,26 @@ import { connect } from 'react-redux';
 const CartItem = (props) => {
     let styleBtn = {
         width: '20px',
-        height: '20px',
-        margin: '5px'
+        height: '15px !important',
+        margin: '5px',
+        border: 'none',
     }
+
     let cartItem = props.cartItem.product;
     let quantity = props.quantity;
     let total = cartItem.price * quantity;
     return (
         <tr className="text-center">
             <td className="product-remove"><NavLink to="#" onClick={() => props.deleteItem(cartItem)}><span className="ion-ios-close" /></NavLink></td>
-            <td className="image-prod"><div className="img" style={{ backgroundImage: `url(${cartItem.src})` }} /></td>
+            <td className="image-prod"><div className="img" style={{ backgroundImage: `url(${cartItem.picture})` }} /></td>
             <td className="product-name">
                 <h3>{cartItem.name}</h3>
             </td>
             <td className="price">${cartItem.price}</td>
             <td className="price">
+                <button style={styleBtn} type="button" onClick={() => props.decrease(cartItem)}>-</button>
                 {quantity}
                 <button style={styleBtn} type="button" onClick={() => props.increase(cartItem)}>+</button>
-                <button style={styleBtn} type="button" onClick={() => props.decrease(cartItem)}>-</button>
             </td>
             <td className="total">${total}</td>
         </tr>
