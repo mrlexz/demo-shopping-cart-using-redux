@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { logout } from './../../actions/index'
 
 // const MenuLink = ({ lable, to, activeOnlyExact }) => {
 //     return (
@@ -32,6 +34,17 @@ const Navbar = (props) => {
     //     }
     //     return result;
     // }
+    const [isLogout, setIsLogout] = React.useState(false);
+    const logout = () => {
+        localStorage.clear();
+        props.logout();
+        setIsLogout(true);
+    }
+
+    if (isLogout) {
+        return <Redirect to="/login" />
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
             <div className="container">
@@ -45,10 +58,13 @@ const Navbar = (props) => {
                         <li className="nav-item"><NavLink to="/products" className="nav-link">Products</NavLink></li>
                         <li className="nav-item"><NavLink to="/checkout" className="nav-link">Checkout</NavLink></li>
                         <li className="nav-item cta cta-colored"><NavLink to="/cart" className="nav-link"><span className="icon-shopping_cart"></span>[{cartItems.length}]</NavLink></li>
-                        {(isLogin=="true") && <li className="nav-item"><NavLink to="/user-profile" className="nav-link">{userName}</NavLink></li>}
-                        {!(isLogin=="true") && <li className="nav-item"><NavLink to="/login" className="nav-link">Login</NavLink></li>}
-                        {isAdmin=="true" && <li className="nav-item"><NavLink to="/management" className="nav-link">Managenement</NavLink></li>}
-                        {!(isLogin=="true") && <li className="nav-item"><NavLink to="/register" className="nav-link">Register</NavLink></li>}
+                        {(isLogin == "true") && <li className="nav-item"><NavLink to="/user-profile" className="nav-link">{userName}</NavLink></li>}
+                        {!(isLogin == "true") && <li className="nav-item"><NavLink to="/login" className="nav-link">Login</NavLink></li>}
+                        {isAdmin == "true" && <li className="nav-item"><NavLink to="/management" className="nav-link">Managenement</NavLink></li>}
+                        {!(isLogin == "true") && <li className="nav-item"><NavLink to="/register" className="nav-link">Register</NavLink></li>}
+
+                        {(isLogin == "true") && <li className="nav-item"><NavLink onClick={logout} className="nav-link">Logout</NavLink></li>}
+
                     </ul>
                 </div>
             </div>
@@ -63,4 +79,11 @@ const mapStateToProps = state => {
         infor: state.login,
     }
 }
-export default connect(mapStateToProps)(Navbar);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logout: () => {
+            dispatch(logout());
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

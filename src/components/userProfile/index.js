@@ -69,10 +69,6 @@ const UserProfile = (props) => {
                 <Col span={7}>{user?.email}</Col>
             </Row>
 
-            <div className="row">
-                <div className="btn btn-primary py-3 px-4 button-logout" onClick={logout}>Logout
-                </div>
-            </div>
 
         </div>
     )

@@ -33,7 +33,7 @@ function CartView(props) {
             <div className="container">
 
                 <div className="row">
-                    <div className="col-md-9 ftco-animate fadeInUp ftco-animated ftco-cart">
+                    <div className="col-md-9 ftco-animate fadeInUp ftco-animated">
                         <div className="cart-list">
                             <table className="table">
                                 <thead className="thead-primary">
@@ -57,7 +57,8 @@ function CartView(props) {
 
                     <div className="col-md-3 ftco-animate fadeInUp ftco-animated ftco-cart">
                         <CartTotals />
-                        <p><NavLink to="/checkout" className="btn btn-primary py-3 px-4">Proceed to Checkout</NavLink></p>
+                        <p style={{ display: 'flex', justifyContent: 'center' }}>
+                            <NavLink to="/checkout" className="btn btn-primary py-3 px-4">Proceed to Checkout</NavLink></p>
 
                     </div>
                 </div>
@@ -67,9 +68,9 @@ function CartView(props) {
                         <p><NavLink to="/products" className="btn btn-primary py-3 px-4">Back to Shopping</NavLink></p>
                     </div>
                     <div className="col-lg-4 mt-5">
-                    <h3>Can you need!</h3>
+                        <h3>Can you need!</h3>
                         <Carousel autoplay>
-                        
+
                             {products?.map((product, index) => {
                                 return (
                                     <div className="slide-custom" key={index}>
